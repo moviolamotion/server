@@ -1,0 +1,132 @@
+/* 🌍 Allgemeine Stile */
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #667eea, #764ba2); /* Hintergrund bleibt */
+    color: white;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden; /* Kein horizontales Scrollen */
+}
+
+/* 🏠 NAVBAR */
+.full-width-navbar {
+    width: 100%;
+    padding: 15px 50px;
+    background-color: white;
+    border-bottom: 2px solid #ddd;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.navbar-toggler {
+    border: none;
+    outline: none;
+}
+
+.navbar-brand img {
+    height: 50px;
+}
+
+/* Menü */
+.navbar-nav {
+    display: flex;
+    gap: 20px;
+}
+
+.navbar-nav a {
+    text-decoration: none;
+    color: #555;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+/* 🛍️ Hauptinhalt */
+.main-content {
+    flex: 1;
+    padding: 120px 20px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* 🛒 Warenkorb */
+.container {
+    max-width: 600px;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    backdrop-filter: blur(10px);
+    margin: auto;
+}
+
+/* 📜 FOOTER */
+.full-width-footer {
+    width: 100%;
+    padding: 20px;
+    background-color: white;
+    border-top: 2px solid #ddd;
+    position: relative;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.footer-info, .footer-contact {
+    font-size: 14px;
+    color: black;
+}
+
+.footer-logo img {
+    height: 40px;
+}
+
+/* 📱 Mobile Ansicht */
+@media (max-width: 992px) {
+    /* Hintergrund für das ausgeklappte Menü */
+    .navbar-collapse {
+        background: white;
+        padding: 10px;
+    }
+
+    /* Menü Links enger zusammenrücken */
+    .navbar-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px; /* Weniger Abstand zwischen den Menüpunkten */
+        padding-left: 15px; /* Links ausrichten */
+    }
+
+    .navbar-nav .nav-item {
+        padding: 5px 0; /* Weniger vertikaler Abstand */
+    }
+
+    .navbar-nav .nav-link {
+        font-size: 16px; /* Kleinere Schriftgröße */
+        padding: 8px 0; /* Weniger Abstand um die Schrift */
+    }
+
+    /* 🛒 Hauptinhalt */
+    .container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    /* Footer für kleinere Bildschirme */
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+}
