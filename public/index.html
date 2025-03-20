@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kasse - Moviola Motion</title>
+    <title>LALA - Moviola Motion</title>
     <link rel="stylesheet" href="checkout.css">
 </head>
 <body>
@@ -18,7 +18,26 @@
             <h2>Gesamtpreis: <span id="total-price">0</span>€</h2>
         </div>
 
-        <button id="pay-button">Jetzt bezahlen</button>
+        <button id="checkout-button">Bezahlen</button>
+
+        <script>
+          document.getElementById("checkout-button").addEventListener("click", () => {
+            fetch("/create-checkout-session", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json"
+              }
+            })
+              .then(res => res.json())
+              .then(data => {
+                if (data.url) {
+                  window.location.href = data.url;
+                }
+              })
+              .catch(err => console.error(err));
+          });
+        </script>
+        
     </div>
 
     <script src="https://js.stripe.com/v3/"></script>

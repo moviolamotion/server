@@ -1,7 +1,4 @@
-
-
-
-const stripe = Stripe("pk_live_51R440fFaOyPdwLGv0sPqcbNeurCp0vw38fICLsHK0Min7tpjHjBpm77UwRucBO0FK4GOUDhMl8eKUt933lvrQoFQ00OgJp9M7x"); // Ersetze mit deinem echten Stripe Public Key
+const stripe = Stripe("pk_live_51R440fFaOyPdwLGv0sPqcbNeurCp0vw38fICLsHK0Min7tpjHjBpm77UwRucBO0FK4GOUDhMl8eKUt933lvrQoFQ00OgJp9M7x"); // DEIN STRIPE PUBLIC KEY!
 
 document.addEventListener("DOMContentLoaded", function () {
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -9,12 +6,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const totalPriceElement = document.getElementById("total-price");
     let totalPrice = 0;
 
-    cartSummary.innerHTML = "";
-
     cart.forEach(item => {
         totalPrice += item.price * item.hours;
         let listItem = document.createElement("li");
         listItem.textContent = `${item.name} - ${item.hours}h x ${item.price}€ = ${item.price * item.hours}€`;
+
         cartSummary.appendChild(listItem);
     });
 
@@ -22,24 +18,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.getElementById("pay-button").addEventListener("click", async () => {
         try {
-            console.log("🛒 Sende Warenkorb an den Server:", cart);
-
-            const response = await fetch("https://moviolamotion-stipe-server-1.onrender.com/create-checkout-session", {
-
-
+            const response = await fetch("http://localhost:3333/create-checkout-session", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ cart }) // Sende den Warenkorb an den Server
+                body: JSON.stringify({ cart }) 
             });
 
             const session = await response.json();
-            console.log("🔄 Antwort vom Server:", session); // Debugging
-
             if (!session.url) {
                 throw new Error("Fehler: Keine Session-URL erhalten!");
             }
-
-            // Weiterleitung zur Stripe-Checkout-Seite
             window.location.href = session.url;
         } catch (error) {
             console.error("❌ Fehler beim Checkout:", error);

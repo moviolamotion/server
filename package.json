@@ -4,5 +4,23 @@
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "stripe": "^17.7.0"
-  }
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "checkout",
+  "version": "1.0.0",
+  "main": "checkout.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moviolamotion/server.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/moviolamotion/server/issues"
+  },
+  "homepage": "https://github.com/moviolamotion/server#readme",
+  "description": ""
 }
