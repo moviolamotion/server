@@ -1,8 +1,10 @@
 const express = require("express");
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
-const app = express();
+
+const app = express(); // 🛠️ FEHLER BEHOBEN: Express-App initialisiert!
 const PORT = process.env.PORT || 10000; // Render erwartet eine PORT-Variable
 
+// Statische Dateien bereitstellen (z. B. index.html)
 app.use(express.static("public"));
 app.use(express.json());
 
@@ -33,4 +35,5 @@ app.post("/create-checkout-session", async (req, res) => {
   }
 });
 
+// ✅ Express-Server starten
 app.listen(PORT, () => console.log(`✅ Server läuft auf Port ${PORT}`));
